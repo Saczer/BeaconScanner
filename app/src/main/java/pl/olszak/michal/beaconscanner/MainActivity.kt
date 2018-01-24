@@ -32,10 +32,6 @@ class MainActivity : AppCompatActivity(), BeaconConsumer {
         beaconManager?.backgroundScanPeriod = TimeUnit.SECONDS.toMillis(1)
         beaconManager?.beaconParsers?.let {
             it.add(BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
-            it.add(BeaconParser().setBeaconLayout("x,s:0-1=feaa,m:2-2=20,d:3-3,d:4-5,d:6-7,d:8-11,d:12-15"))
-            it.add(BeaconParser().setBeaconLayout("s:0-1=feaa,m:2-2=00,p:3-3:-41,i:4-13,i:14-19"))
-            it.add(BeaconParser().setBeaconLayout("s:0-1=feaa,m:2-2=10,p:3-3:-41,i:4-20v"))
-            it.add(BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
         }
         beaconManager?.bind(this)
     }
@@ -80,7 +76,7 @@ class MainActivity : AppCompatActivity(), BeaconConsumer {
             it.addMonitorNotifier(monitorNotifier)
             it.addRangeNotifier(rangeNotifier)
             try {
-                it.startMonitoringBeaconsInRegion(Region("background", null, null, null))
+//                it.startMonitoringBeaconsInRegion(Region("background", null, null, null))
                 it.startRangingBeaconsInRegion(Region("background", null, null, null))
             } catch (e: RuntimeException) {
                 Log.e("TAG", e.message, e)
